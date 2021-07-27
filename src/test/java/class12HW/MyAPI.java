@@ -40,14 +40,14 @@ public class MyAPI {
             String region =  mainObj.getString("region");
             JSONArray callingCodes = mainObj.getJSONArray("callingCodes");
             JSONArray borders = mainObj.getJSONArray("borders");
-            JSONArray currencies = (JSONArray) mainObj.getJSONArray("currencies").get(0);
-            String symbol = currencies.getString(Integer.parseInt("symbol"));
+            JSONObject currencies = (JSONObject) mainObj.getJSONArray("currencies").get(0);
+            String symbol = currencies.getString("symbol");
 
 
             System.out.println("region " +region);
             System.out.println("callingCodes " + callingCodes);
             System.out.println("borders " + borders);
-            System.out.println("symbol" + symbol);
+            System.out.println("symbol " + symbol);
         }
 
 }

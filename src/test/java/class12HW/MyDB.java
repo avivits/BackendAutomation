@@ -14,7 +14,7 @@ public class MyDB {
     public static void main(String[] args) throws SQLException {
         Connection con = DriverManager.getConnection("jdbc:mysql://"+SERVER+":"+PORT, USER_NAME, PASSWORD);
 
-      createTable(con);
+      //createTable(con);
       insertDog(con, "Hugo", 5, "mixed");
       insertDog(con, "Duba", 12, "mixed");
       insertDog(con, "Hanale", 15, "pit bull");
@@ -34,7 +34,7 @@ public class MyDB {
     }
 
     private static void insertDog(Connection con, String name, int age, String breed) throws SQLException {
-        String statementToExecute = "INSERT INTO " + DATABASE_NAME + ".dogs (`id`, `name` , 'breed') VALUES ('" + name + "', '" + age + "', '" +breed  +"');";
+        String statementToExecute = "INSERT INTO " + DATABASE_NAME + ".dogs (`name` ,`age`, `breed`) VALUES ('" + name + "', '" + age + "', '" +breed  +"');";
         con.createStatement().execute(statementToExecute);
     }
 
@@ -55,7 +55,7 @@ public class MyDB {
         while (rs.next()) {
             //Retrieve by column name
             String name = rs.getString("name");
-            int age = rs.getInt("id");
+            int age = rs.getInt("age");
             String breed = rs.getString("breed");
 
             System.out.print(", Name: " + name);
